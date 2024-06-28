@@ -1,8 +1,10 @@
 import requests
 
+from .retry import retry
+
 PERIOD = (0, 0)
 
-
+@retry(3)
 def get_proxy():
     return requests.get("http://demo.spiderpy.cn/get/?type=https").json()
 
